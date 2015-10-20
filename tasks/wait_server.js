@@ -53,7 +53,7 @@ module.exports = function (grunt) {
         if (options.req) {
           // if options.req use request
           request(options.req, function (err, resp, body) {
-            if (!err) {
+            if (!err && body.indexOf(options.unwantedText) === -1) {
               return callback();
             }
             setTimeout(tryConnection, options.interval);
